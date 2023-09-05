@@ -1,13 +1,11 @@
-import { useContext, useRef } from "react";
-import LanguageContext from "../context/EnglishContext";
-import { setHoverLink } from "../types/Types";
+"use client";
 
-type ContactForm = {
-  setHoverLink: setHoverLink;
-};
+import { useRef } from "react";
+import { useCursorContext, useLanguageContext } from "../context/Context";
 
-const ContactForm = ({ setHoverLink }: ContactForm) => {
-  const language = useContext(LanguageContext);
+const ContactForm = () => {
+  const { language, setLanguage } = useLanguageContext();
+  const { setHoverLink } = useCursorContext();
   const submitRef = useRef<HTMLInputElement>(null);
 
   return language === "ES" ? (

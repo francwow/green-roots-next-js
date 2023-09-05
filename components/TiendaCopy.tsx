@@ -1,8 +1,29 @@
+"use client";
+
 import { useInView } from "react-intersection-observer";
 import { useContext } from "react";
 import product2 from "../assets/webpImages/product2.webp";
 import product1 from "../assets/webpImages/product1.webp";
-import LanguageContext from "../context/EnglishContext";
+import { useLanguageContext } from "../context/Context";
+import Image from "next/image";
+
+export const HeaderCopy = () => {
+  const { language, setLanguage } = useLanguageContext();
+
+  return (
+    <>
+      {language === "ES" ? (
+        <h1 className="main-header">
+          Productos de CBD, para paz y tranquilidad.
+        </h1>
+      ) : (
+        <h1 className="main-header">
+          CBD products, for peace and tranquillity.
+        </h1>
+      )}
+    </>
+  );
+};
 
 export const TiendaCopy = () => {
   const { ref: tiendaProduct, inView: productInView } = useInView({
@@ -14,7 +35,7 @@ export const TiendaCopy = () => {
     threshold: 0.1,
   });
 
-  const language = useContext(LanguageContext);
+  const { language, setLanguage } = useLanguageContext();
 
   return (
     <div className="tienda-copy-wrapper">
@@ -55,7 +76,7 @@ export const TiendaCopy = () => {
             productInView ? "tienda-product in-view" : "tienda-product"
           }
         >
-          <img src={product1} alt="Green Roots product" />
+          <Image src={product1} alt="Green Roots product" />
         </div>
       </div>
     </div>
@@ -72,6 +93,8 @@ export const TiendaCopy2 = () => {
     threshold: 0.1,
   });
 
+  const { language, setLanguage } = useLanguageContext();
+
   return (
     <div className="tienda-copy-wrapper">
       <div className="tienda-copy-container second-copy">
@@ -81,7 +104,7 @@ export const TiendaCopy2 = () => {
             productInView ? "tienda-product in-view" : "tienda-product"
           }
         >
-          <img src={product2} alt="Green Roots product" />
+          <Image src={product2} alt="Green Roots product" />
         </div>
         <div
           ref={tiendaCopy}

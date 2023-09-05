@@ -1,19 +1,14 @@
-import { deskTop, setHoverLink, setMenuActive } from "../types/Types";
+"use client";
+
 import { navItems } from "../data/navItems";
-import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import Social from "./Social";
-import { useContext } from "react";
-import LanguageContext from "../context/EnglishContext";
+import Link from "next/link";
+import { useCursorContext, useLanguageContext } from "../context/Context";
 
-type Footer = {
-  deskTop: deskTop;
-  setHoverLink: setHoverLink;
-};
-
-const Footer = (props: Footer) => {
-  const language = useContext(LanguageContext);
-  const { deskTop, setHoverLink } = props;
+const Footer = () => {
+  const { hoverLink, setHoverLink } = useCursorContext();
+  const { language, setLanguage } = useLanguageContext();
 
   return (
     <div className="footer-wrapper">
@@ -50,12 +45,12 @@ const Footer = (props: Footer) => {
                 >
                   <Link
                     onMouseEnter={() => {
-                      props.setHoverLink(true);
+                      setHoverLink(true);
                     }}
                     onMouseLeave={() => {
-                      props.setHoverLink(false);
+                      setHoverLink(false);
                     }}
-                    to={item.href}
+                    href={item.href}
                   >
                     {language === "ES" ? item.nameES : item.nameEN}
                   </Link>
@@ -64,7 +59,7 @@ const Footer = (props: Footer) => {
             })}
           </ul>
         </div>
-        <Social setHoverLink={setHoverLink} />
+        <Social />
       </div>
     </div>
   );

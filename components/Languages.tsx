@@ -1,16 +1,15 @@
-import { useContext } from "react";
-import { setHoverLink, setLanguage } from "../types/Types";
-import LanguageContext from "../context/EnglishContext";
+"use client";
+
+import { useLanguageContext, useCursorContext } from "../context/Context";
 
 type Languages = {
-  setLanguage: setLanguage;
-  setHoverLink: setHoverLink;
   inicio: boolean;
 };
 
 const Languages = (props: Languages) => {
-  const { setLanguage, setHoverLink, inicio } = props;
-  const language = useContext(LanguageContext);
+  const { inicio } = props;
+  const { language, setLanguage } = useLanguageContext();
+  const { hoverLink, setHoverLink } = useCursorContext();
 
   return (
     <div
@@ -24,10 +23,10 @@ const Languages = (props: Languages) => {
         <li>
           <span
             onMouseEnter={() => {
-              props.setHoverLink(true);
+              setHoverLink(true);
             }}
             onMouseLeave={() => {
-              props.setHoverLink(false);
+              setHoverLink(false);
             }}
             tabIndex={0}
             onClick={() => setLanguage("EN")}
@@ -42,10 +41,10 @@ const Languages = (props: Languages) => {
         <li>
           <span
             onMouseEnter={() => {
-              props.setHoverLink(true);
+              setHoverLink(true);
             }}
             onMouseLeave={() => {
-              props.setHoverLink(false);
+              setHoverLink(false);
             }}
             tabIndex={0}
             onClick={() => setLanguage("ES")}

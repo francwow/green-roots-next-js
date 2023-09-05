@@ -1,21 +1,22 @@
-import { useContext, useEffect, useRef, useState } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
 import { useInView } from "react-intersection-observer";
 import { tiendaItems } from "../data/tiendaItems";
-import { deskTop, setHoverLink } from "../types/Types";
-import LanguageContext from "../context/EnglishContext";
+import Image from "next/image";
+import { useCursorContext, useLanguageContext } from "../context/Context";
 
-type Carousel = {
-  deskTop: deskTop;
-  setHoverLink: setHoverLink;
-};
-
-const Carousel = (props: Carousel) => {
+const Carousel = () => {
   const { ref: carousel, inView: carouselInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const language = useContext(LanguageContext);
+  const deskTop = useMediaQuery("(min-width: 961px)");
+  const { language, setLanguage } = useLanguageContext();
+  const { hoverLink, setHoverLink } = useCursorContext();
+
   const initialState = 0;
   const [index, setIndex] = useState<number>(initialState);
   const [hovered, setHovered] = useState<boolean>(false);
@@ -59,26 +60,24 @@ const Carousel = (props: Carousel) => {
               }`}
             >
               <div className="item-info">
-                {props.deskTop ? (
-                  <h2
-                    className={`${
-                      hovered && props.deskTop
-                        ? "button-hovered item-header"
-                        : "item-header"
-                    } ${index === item.index ? "fade-in-right" : ""}`}
-                  >
-                    {language === "ES" ? item.nameES : item.nameEN}
-                  </h2>
-                ) : null}
+                <h2
+                  className={`${
+                    hovered && deskTop
+                      ? "button-hovered item-header"
+                      : "item-header"
+                  } ${index === item.index ? "fade-in-right" : ""}`}
+                >
+                  {language === "ES" ? item.nameES : item.nameEN}
+                </h2>
 
                 <button
                   onMouseEnter={() => {
                     setHovered(true);
-                    props.setHoverLink(true);
+                    setHoverLink(true);
                   }}
                   onMouseLeave={() => {
                     setHovered(false);
-                    props.setHoverLink(false);
+                    setHoverLink(false);
                   }}
                   className={index === item.index ? "button" : ""}
                 >
@@ -86,7 +85,7 @@ const Carousel = (props: Carousel) => {
                 </button>
               </div>
               <div className="img-container">
-                <img src={item.img} alt="GreenRoots product" />
+                <Image src={item.img} alt="GreenRoots product" />
               </div>
             </div>
           );
@@ -96,10 +95,10 @@ const Carousel = (props: Carousel) => {
             return (
               <button
                 onMouseEnter={() => {
-                  props.setHoverLink(true);
+                  setHoverLink(true);
                 }}
                 onMouseLeave={() => {
-                  props.setHoverLink(false);
+                  setHoverLink(false);
                 }}
                 onClick={() => {
                   setIndex(item.index);

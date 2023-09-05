@@ -1,12 +1,17 @@
+"use client";
+
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
+import { useCursorContext } from "../context/Context";
 
 function ScrollTop() {
-  const { pathname } = useLocation();
+  const pathname = usePathname();
+  const { hoverLink, setHoverLink } = useCursorContext();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+    setHoverLink(false);
+  }, [pathname, setHoverLink]);
 
   return null;
 }

@@ -1,22 +1,15 @@
-import { useContext } from "react";
-import { deskTop, rotate, setHoverLink } from "../types/Types";
+"use client";
+
 import { useInView } from "react-intersection-observer";
 import Footer from "./Footer";
-import LanguageContext from "../context/EnglishContext";
 import { DescOne, DescTwo } from "./CBDInfo";
-import cbdImg1 from "../assets/webpImages/cbd1.webp";
-import cbdVideo from "../assets/videos/aceite.mp4";
 import cbdImg2 from "../assets/webpImages/nosotros.webp";
 import CTA from "./CTA";
 import Whatsapp from "./Whatsapp";
+import Image from "next/image";
+import { useLanguageContext } from "../context/Context";
 
-type CBD = {
-  rotate: rotate;
-  deskTop: deskTop;
-  setHoverLink: setHoverLink;
-};
-
-const CBD = (props: CBD) => {
+const CBD = () => {
   const { ref: descImg, inView: imgInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -26,12 +19,11 @@ const CBD = (props: CBD) => {
     threshold: 0.1,
   });
 
-  const language = useContext(LanguageContext);
-  const { rotate, setHoverLink, deskTop } = props;
+  const { language, setLanguage } = useLanguageContext();
 
   return (
     <div style={{ backgroundColor: "white" }} className="main-wrapper">
-      <Whatsapp setHoverLink={setHoverLink} />
+      <Whatsapp />
       <section className="picture-container">
         <div className="cbd-picture">
           <div className="main-header-wrapper">
@@ -62,7 +54,7 @@ const CBD = (props: CBD) => {
             >
               <figure className="cbd-video">
                 <video muted loop autoPlay width={300}>
-                  <source type="video/mp4" src={cbdVideo} />
+                  <source type="video/mp4" src="/videos/aceite.mp4" />
                 </video>
               </figure>
               {/* <img src={cbdImg1} alt="CBD products" /> */}
@@ -74,13 +66,13 @@ const CBD = (props: CBD) => {
               ref={descImg2}
               className={img2InView ? "desc-img in-view" : "desc-img"}
             >
-              <img src={cbdImg2} alt="CBD products" />
+              <Image src={cbdImg2} alt="CBD products" />
             </div>
           </div>
-          <CTA setHoverLink={setHoverLink} />
+          <CTA />
         </div>
       </section>
-      <Footer deskTop={deskTop} setHoverLink={setHoverLink} />
+      <Footer />
     </div>
   );
 };

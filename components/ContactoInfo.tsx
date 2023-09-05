@@ -1,15 +1,12 @@
-import { Link } from "react-router-dom";
-import { setHoverLink } from "../types/Types";
-import CTA from "./CTA";
+"use client";
 
-type ContactInfo = {
-  contact: (node?: Element | null | undefined) => void;
-  contactInView: boolean;
-  setHoverLink: setHoverLink;
-};
+import { useInView } from "react-intersection-observer";
 
-export const InfoEs = (props: ContactInfo) => {
-  const { contact, contactInView, setHoverLink } = props;
+export const InfoEs = () => {
+  const { ref: contact, inView: contactInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
     <div
@@ -73,8 +70,11 @@ export const InfoEs = (props: ContactInfo) => {
   );
 };
 
-export const InfoEn = (props: ContactInfo) => {
-  const { contact, contactInView, setHoverLink } = props;
+export const InfoEn = () => {
+  const { ref: contact, inView: contactInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
     <div

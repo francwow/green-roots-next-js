@@ -1,9 +1,10 @@
+"use client";
+
 import { useInView } from "react-intersection-observer";
-import { useContext } from "react";
-import LanguageContext from "../context/EnglishContext";
+import { useLanguageContext } from "../context/Context";
 
 export const DescOne = () => {
-  const language = useContext(LanguageContext);
+  const { language, setLanguage } = useLanguageContext();
   const { ref: descInfo, inView: infoInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -62,7 +63,7 @@ export const DescOne = () => {
 };
 
 export const DescTwo = () => {
-  const language = useContext(LanguageContext);
+  const { language, setLanguage } = useLanguageContext();
   const { ref: descInfo, inView: infoInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,

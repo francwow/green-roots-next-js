@@ -1,20 +1,18 @@
+"use client";
+
 import { navItems } from "../data/navItems";
-import { Link } from "react-router-dom";
-import { useContext, useEffect } from "react";
 import Social from "./Social";
-import MenuActiveContext from "../context/menuActiveContext";
-import { setHoverLink, setMenuActive } from "../types/Types";
-import LanguageContext from "../context/EnglishContext";
+import Link from "next/link";
+import {
+  useCursorContext,
+  useLanguageContext,
+  useMenuContext,
+} from "../context/Context";
 
-type NavMenu = {
-  setHoverLink: setHoverLink;
-  setMenuActive: setMenuActive;
-};
-
-const NavMenu = (props: NavMenu) => {
-  const { setHoverLink, setMenuActive } = props;
-  const language = useContext(LanguageContext);
-  const menuActive = useContext(MenuActiveContext);
+const NavMenu = () => {
+  const { menuActive, setMenuActive } = useMenuContext();
+  const { language, setLanguage } = useLanguageContext();
+  const { hoverLink, setHoverLink } = useCursorContext();
 
   return (
     <>
@@ -30,16 +28,16 @@ const NavMenu = (props: NavMenu) => {
                 >
                   <Link
                     onMouseEnter={() => {
-                      props.setHoverLink(true);
+                      setHoverLink(true);
                     }}
                     onMouseLeave={() => {
-                      props.setHoverLink(false);
+                      setHoverLink(false);
                     }}
                     onClick={() => {
                       setMenuActive(false);
                       setHoverLink(false);
                     }}
-                    to={item.href}
+                    href={item.href}
                   >
                     {language === "ES" ? item.nameES : item.nameEN}
                   </Link>
@@ -47,7 +45,7 @@ const NavMenu = (props: NavMenu) => {
               );
             })}
           </ul>
-          <Social setHoverLink={setHoverLink} />
+          <Social />
         </div>
       ) : null}
     </>

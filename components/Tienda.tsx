@@ -1,37 +1,17 @@
-import { deskTop, rotate, setHoverLink } from "../types/Types";
 import Carousel from "./Carousel";
 import TiendaIcons from "./TiendaIcons";
 import Footer from "./Footer";
-import { TiendaCopy, TiendaCopy2 } from "./TiendaCopy";
-import { useContext } from "react";
-import LanguageContext from "../context/EnglishContext";
+import { HeaderCopy, TiendaCopy, TiendaCopy2 } from "./TiendaCopy";
 import Whatsapp from "./Whatsapp";
 
-type Tienda = {
-  rotate: rotate;
-  setHoverLink: setHoverLink;
-  deskTop: deskTop;
-};
-
-const Tienda = (props: Tienda) => {
-  const { rotate, setHoverLink, deskTop } = props;
-  const language = useContext(LanguageContext);
-
+const Tienda = () => {
   return (
     <div style={{ backgroundColor: "white" }} className="main-wrapper">
-      <Whatsapp setHoverLink={setHoverLink} />
+      <Whatsapp />
       <section className="picture-container">
         <div className="tienda-picture">
           <div className="main-header-wrapper">
-            {language === "ES" ? (
-              <h1 className="main-header">
-                Productos de CBD, para paz y tranquilidad.
-              </h1>
-            ) : (
-              <h1 className="main-header">
-                CBD products, for peace and tranquillity.
-              </h1>
-            )}
+            <HeaderCopy />
           </div>
           <div className="picture-wave">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -48,13 +28,13 @@ const Tienda = (props: Tienda) => {
         <div className="tienda-container">
           <TiendaCopy />
           <div className="carousel-wrapper">
-            <Carousel setHoverLink={setHoverLink} deskTop={deskTop} />
+            <Carousel />
           </div>
           <TiendaCopy2 />
           <TiendaIcons />
         </div>
       </section>
-      <Footer deskTop={deskTop} setHoverLink={setHoverLink} />
+      <Footer />
     </div>
   );
 };

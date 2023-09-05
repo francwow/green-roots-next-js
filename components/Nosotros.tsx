@@ -1,21 +1,16 @@
-import { useContext } from "react";
-import { deskTop, rotate, setHoverLink } from "../types/Types";
+"use client";
+
 import { DescOne, DescTwo, DescThree } from "./NosotrosInfo";
 import nosotrosImg1 from "../assets/webpImages/nosotros1.webp";
 import nosotrosImg2 from "../assets/webpImages/nosotros2.webp";
 import Footer from "./Footer";
-import LanguageContext from "../context/EnglishContext";
 import { useInView } from "react-intersection-observer";
 import CTA from "./CTA";
 import Whatsapp from "./Whatsapp";
+import Image from "next/image";
+import { useLanguageContext } from "../context/Context";
 
-type Nosotros = {
-  rotate: rotate;
-  setHoverLink: setHoverLink;
-  deskTop: deskTop;
-};
-
-const Nosotros = (props: Nosotros) => {
+const Nosotros = () => {
   const { ref: descImg, inView: imgInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -25,12 +20,11 @@ const Nosotros = (props: Nosotros) => {
     threshold: 0.1,
   });
 
-  const { deskTop, setHoverLink, rotate } = props;
-  const language = useContext(LanguageContext);
+  const { language, setLanguage } = useLanguageContext();
 
   return (
     <div style={{ backgroundColor: "white" }} className="main-wrapper">
-      <Whatsapp setHoverLink={setHoverLink} />
+      <Whatsapp />
       <section className="picture-container">
         <div className="nosotros-picture">
           <div className="main-header-wrapper">
@@ -63,7 +57,7 @@ const Nosotros = (props: Nosotros) => {
               ref={descImg}
               className={imgInView ? "desc-img in-view" : "desc-img"}
             >
-              <img
+              <Image
                 className="nosotros-img-one"
                 src={nosotrosImg2}
                 alt="CBD products"
@@ -79,17 +73,17 @@ const Nosotros = (props: Nosotros) => {
               ref={descImg2}
               className={img2InView ? "desc-img in-view" : "desc-img"}
             >
-              <img
+              <Image
                 className="nosotros-img-two"
                 src={nosotrosImg1}
                 alt="CBD farmer"
               />
             </div>
           </div>
-          <CTA setHoverLink={setHoverLink} />
+          <CTA />
         </div>
       </section>
-      <Footer deskTop={deskTop} setHoverLink={setHoverLink} />
+      <Footer />
     </div>
   );
 };

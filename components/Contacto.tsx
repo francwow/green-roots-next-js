@@ -1,25 +1,12 @@
-import { useContext } from "react";
-import { deskTop, rotate, setHoverLink } from "../types/Types";
-import { useInView } from "react-intersection-observer";
+"use client";
+
 import { InfoEn, InfoEs } from "./ContactoInfo";
 import Footer from "./Footer";
-import LanguageContext from "../context/EnglishContext";
 import ContactForm from "./ContactForm";
+import { useLanguageContext } from "../context/Context";
 
-type Contacto = {
-  deskTop: deskTop;
-  rotate: rotate;
-  setHoverLink: setHoverLink;
-};
-
-const Contacto = (props: Contacto) => {
-  const { ref: contact, inView: contactInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const { deskTop, rotate, setHoverLink } = props;
-  const language = useContext(LanguageContext);
+const Contacto = () => {
+  const { language, setLanguage } = useLanguageContext();
 
   return (
     <div style={{ backgroundColor: "white" }} className="main-wrapper">
@@ -45,25 +32,13 @@ const Contacto = (props: Contacto) => {
       </section> */}
       <section className="section-container">
         <div className="contacto-wrapper">
-          <ContactForm setHoverLink={setHoverLink} />
+          <ContactForm />
           <div className="contacto-info-container">
-            {language === "ES" ? (
-              <InfoEs
-                contact={contact}
-                contactInView={contactInView}
-                setHoverLink={setHoverLink}
-              />
-            ) : (
-              <InfoEn
-                contact={contact}
-                contactInView={contactInView}
-                setHoverLink={setHoverLink}
-              />
-            )}
+            {language === "ES" ? <InfoEs /> : <InfoEn />}
           </div>
         </div>
       </section>
-      <Footer deskTop={deskTop} setHoverLink={setHoverLink} />
+      <Footer />
     </div>
   );
 };

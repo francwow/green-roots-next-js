@@ -1,28 +1,28 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { FacebookIcon } from "./Icons";
 import { InstagramIcon } from "./Icons";
-import { setHoverLink } from "../types/Types";
+import { useCursorContext } from "../context/Context";
 
-type Social = {
-  setHoverLink: setHoverLink;
-};
+const Social = () => {
+  const { hoverLink, setHoverLink } = useCursorContext();
 
-const Social = (props: Social) => {
   return (
     <div className="social-container">
       <div style={{ animationDelay: "0.5s" }} className="icon-container">
         <Link
           onMouseEnter={() => {
-            props.setHoverLink(true);
+            setHoverLink(true);
           }}
           onMouseLeave={() => {
-            props.setHoverLink(false);
+            setHoverLink(false);
           }}
           onClick={() => {
-            props.setHoverLink(false);
+            setHoverLink(false);
           }}
           target="_blank"
-          to={"https://www.instagram.com/greenrootscolombia/"}
+          href={"https://www.instagram.com/greenrootscolombia/"}
         >
           <FacebookIcon />
         </Link>
@@ -30,16 +30,16 @@ const Social = (props: Social) => {
       <div style={{ animationDelay: "0.7s" }} className="icon-container">
         <Link
           onMouseEnter={() => {
-            props.setHoverLink(true);
+            setHoverLink(true);
           }}
           onMouseLeave={() => {
-            props.setHoverLink(false);
+            setHoverLink(false);
           }}
           onClick={() => {
-            props.setHoverLink(false);
+            setHoverLink(false);
           }}
           target="_blank"
-          to={"https://www.instagram.com/greenrootscolombia/"}
+          href={"https://www.instagram.com/greenrootscolombia/"}
         >
           <InstagramIcon />
         </Link>

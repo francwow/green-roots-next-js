@@ -1,46 +1,53 @@
-import { useContext } from "react";
-import ScrollContext from "../context/scrollContext";
-import {
-  MenuActiveType,
-  ScrollContextType,
-  deskTop,
-  setHoverLink,
-  setLanguage,
-  setMenuActive,
-} from "../types/Types";
-import MenuActiveContext from "../context/menuActiveContext";
+"use client";
+
 import NavMenu from "./NavMenu";
 import Languages from "./Languages";
+import {
+  useCursorContext,
+  useMenuContext,
+  useScrollContext,
+} from "../context/Context";
+import { useEffect } from "react";
 
-type Header = {
-  setMenuActive: setMenuActive;
-  setHoverLink: setHoverLink;
-  setLanguage: setLanguage;
-  deskTop: deskTop;
-};
+const Header = () => {
+  const { menuActive, setMenuActive } = useMenuContext();
+  const { hoverLink, setHoverLink } = useCursorContext();
+  const { scrollDown, setScrollDown } = useScrollContext();
 
-const Header = (props: Header) => {
-  const { setMenuActive, setHoverLink, setLanguage } = props;
-  const menuActive = useContext<MenuActiveType>(MenuActiveContext);
-  const scrollDown = useContext<ScrollContextType>(ScrollContext);
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+    let noScroll = 0;
+
+    function scrollHandle() {
+      const scrolled = window.scrollY;
+      if (scrolled > noScroll) {
+        setScrollDown(true);
+      } else if (scrolled < noScroll) {
+        setScrollDown(false);
+      }
+      noScroll = scrolled <= 0 ? 0 : scrolled;
+    }
+
+    window.addEventListener("scroll", scrollHandle);
+
+    return () => {
+      window.removeEventListener("scroll", scrollHandle);
+    };
+  }, []);
 
   return (
     <div className={!menuActive && scrollDown ? "header scrolled" : "header"}>
-      <Languages
-        inicio={false}
-        setLanguage={setLanguage}
-        setHoverLink={setHoverLink}
-      />
+      <Languages inicio={false} />
       <div className="burger">
         <button
           onMouseEnter={() => {
-            props.setHoverLink(true);
+            setHoverLink(true);
           }}
           onMouseLeave={() => {
-            props.setHoverLink(false);
+            setHoverLink(false);
           }}
           onClick={() => {
-            props.setMenuActive(!menuActive);
+            setMenuActive(!menuActive);
           }}
           className={menuActive ? "burger-btn toggle" : "burger-btn"}
         >
@@ -49,7 +56,7 @@ const Header = (props: Header) => {
           <div className="line_3"></div>
         </button>
       </div>
-      <NavMenu setHoverLink={setHoverLink} setMenuActive={setMenuActive} />
+      <NavMenu />
     </div>
   );
 };

@@ -1,14 +1,11 @@
-import { useContext } from "react";
-import LanguageContext from "../context/EnglishContext";
-import { setHoverLink } from "../types/Types";
-import { Link } from "react-router-dom";
+"use client";
 
-type CTA = {
-  setHoverLink: setHoverLink;
-};
+import Link from "next/link";
+import { useCursorContext, useLanguageContext } from "../context/Context";
 
-const CTA = ({ setHoverLink }: CTA) => {
-  const language = useContext(LanguageContext);
+const CTA = () => {
+  const { language, setLanguage } = useLanguageContext();
+  const { hoverLink, setHoverLink } = useCursorContext();
 
   return (
     <div className="cta-container">
@@ -20,7 +17,7 @@ const CTA = ({ setHoverLink }: CTA) => {
         )}
       </div>
       <div className="btn-container">
-        <Link to={"/tienda"}>
+        <Link href={"/tienda"}>
           {language === "ES" ? (
             <button
               onMouseEnter={() => setHoverLink(true)}

@@ -1,15 +1,12 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { InicioNavItems } from "../data/navItems";
-import { setHoverLink } from "../types/Types";
-import LanguageContext from "../context/EnglishContext";
+import { useCursorContext, useLanguageContext } from "../context/Context";
 
-type InicioNav = {
-  setHoverLink: setHoverLink;
-};
-
-const InicioNav = (props: InicioNav) => {
-  const language = useContext(LanguageContext);
+const InicioNav = () => {
+  const { language, setLanguage } = useLanguageContext();
+  const { hoverLink, setHoverLink } = useCursorContext();
 
   return (
     <div className="inicio-nav-container">
@@ -23,14 +20,14 @@ const InicioNav = (props: InicioNav) => {
             >
               <Link
                 onMouseEnter={() => {
-                  props.setHoverLink(true);
+                  setHoverLink(true);
                 }}
                 onMouseLeave={() => {
-                  props.setHoverLink(false);
+                  setHoverLink(false);
                 }}
-                to={item.href}
+                href={item.href}
                 onClick={() => {
-                  props.setHoverLink(false);
+                  setHoverLink(false);
                 }}
               >
                 {language === "ES" ? item.nameES : item.nameEN}

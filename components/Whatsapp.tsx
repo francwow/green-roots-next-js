@@ -1,29 +1,27 @@
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+"use client";
+
+import Image from "next/image";
 import whatsappLogo from "../assets/webpImages/whatsapp_logo.webp";
-import MenuActiveContext from "../context/menuActiveContext";
-import { setHoverLink } from "../types/Types";
+import Link from "next/link";
+import { useCursorContext, useMenuContext } from "../context/Context";
 
-type Whatsapp = {
-  setHoverLink: setHoverLink;
-};
-
-const Whatsapp = (props: Whatsapp) => {
-  const menuActive = useContext(MenuActiveContext);
+const Whatsapp = () => {
+  const { menuActive, setMenuActive } = useMenuContext();
+  const { hoverLink, setHoverLink } = useCursorContext();
 
   return menuActive ? null : (
     <aside className="whatsapp">
       <Link
         onMouseEnter={() => {
-          props.setHoverLink(true);
+          setHoverLink(true);
         }}
         onMouseLeave={() => {
-          props.setHoverLink(false);
+          setHoverLink(false);
         }}
         target="_blank"
-        to={"https://web.whatsapp.com/"}
+        href={"https://web.whatsapp.com/"}
       >
-        <img src={whatsappLogo} alt="Whatsapp logo" />
+        <Image src={whatsappLogo} alt="Whatsapp logo" />
       </Link>
     </aside>
   );
