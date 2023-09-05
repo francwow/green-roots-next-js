@@ -1,5 +1,3 @@
-"use client";
-
 import Cursor from "../../components/Cursor";
 import Header from "../../components/Header";
 import Provider from "../../components/Provider";
