@@ -1,6 +1,6 @@
 import sgMail from "@sendgrid/mail";
 
-export async function POST(request) {
+export async function POST(request: any) {
   const requestBody = await request.json();
 
   sgMail.setApiKey(process.env.SEND_GRID_API_KEY || "");
