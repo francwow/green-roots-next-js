@@ -62,9 +62,9 @@ export const TiendaCopy = () => {
             <div className="tienda-copy">
               <h2>100% colombian, 100% natural</h2>
               <p>
-                Green Roots offers natural, handmade CBD produts fabricated
-                without the use of chemicals. when you buy one of our products
-                you are helping reduce your own CO2 footrpint, we are a
+                Green Roots offers natural, handmade CBD products fabricated
+                without the use of chemicals. When you buy one of our products
+                you are helping reduce your own CO2 footpint, we are a
                 completely KM0 company.
               </p>
             </div>
@@ -132,7 +132,7 @@ export const TiendaCopy2 = () => {
             <div className="tienda-copy">
               <h2>CBD loves your skin {"<"}3</h2>
               <p>
-                Did you know that your body interacts with CBD trough the
+                Did you know that your body interacts with CBD through the
                 endocannabinoid receptor system?
                 <br />
                 Many of these recetors can be found in the skin, recent studies
