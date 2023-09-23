@@ -3,9 +3,14 @@
 import Image from "next/image";
 import whatsappLogo from "../assets/webpImages/whatsapp_logo.webp";
 import Link from "next/link";
-import { useCursorContext, useMenuContext } from "../context/Context";
+import {
+  useCursorContext,
+  useLanguageContext,
+  useMenuContext,
+} from "../context/Context";
 
 const Whatsapp = () => {
+  const { language } = useLanguageContext();
   const { menuActive, setMenuActive } = useMenuContext();
   const { hoverLink, setHoverLink } = useCursorContext();
 
@@ -19,7 +24,11 @@ const Whatsapp = () => {
           setHoverLink(false);
         }}
         target="_blank"
-        href={"https://web.whatsapp.com/"}
+        href={
+          language === "ES"
+            ? "https://wa.me/573132335432?text=Hola%20Green%20Roots"
+            : "https://wa.me/573132335432?text=Hello%20Green%20Roots"
+        }
       >
         <Image src={whatsappLogo} alt="Whatsapp logo" />
       </Link>

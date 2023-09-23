@@ -61,6 +61,7 @@ body {
 
 .page-wrapper {
   width: 100%;
+  min-height: 100vh;
   opacity: 1;
   animation: page-load 0.5s ease forwards;
   /* transition: 0.5s ease opacity; */
@@ -667,7 +668,7 @@ ul {
   align-items: center;
   justify-content: center;
   flex-basis: 50%;
-  max-width: calc(300px + 10vw);
+  max-width: calc(350px + 10vw);
   height: 400px;
   opacity: 0;
   transform: translate3d(0, 20%, 0);
@@ -677,7 +678,7 @@ ul {
 .tienda-product {
   flex-basis: 50%;
   border-radius: 50%;
-  max-width: calc(300px + 10vw);
+  max-width: calc(350px + 10vw);
   opacity: 0;
   transform: translate3d(0, 10%, 0);
   transition: 1s ease all;
@@ -712,8 +713,8 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: calc(300px + 15vw);
-  height: calc(300px + 15vw);
+  width: calc(250px + 15vw);
+  height: calc(250px + 15vw);
   position: relative;
   z-index: 999;
 }
@@ -727,12 +728,13 @@ ul {
 
 .tienda-copy p {
   text-align: center;
+  word-break: break-word;
   font-family: var(--font-body);
   font-weight: 600;
   padding: 0 20px;
   color: white;
   line-height: 1.4;
-  font-size: calc(0.8rem + 0.5vw);
+  font-size: calc(0.6rem + 0.5vw);
 }
 
 .copy-background-one {
@@ -743,8 +745,8 @@ ul {
   position: absolute;
   margin: auto;
   inset: 0;
-  width: calc(300px + 10vw);
-  height: calc(300px + 10vw);
+  width: calc(350px + 10vw);
+  height: calc(350px + 10vw);
   animation: border-radius-one 4s infinite ease;
 }
 
@@ -756,8 +758,8 @@ ul {
   position: absolute;
   margin: auto;
   inset: 0;
-  width: calc(300px + 10vw);
-  height: calc(300px + 10vw);
+  width: calc(350px + 10vw);
+  height: calc(350px + 10vw);
   animation: border-radius-two 5s infinite ease;
 }
 
@@ -1166,6 +1168,7 @@ ul {
 .contacto-info-container {
   background-color: var(--dark-green);
   padding: 25px;
+  max-width: 300px;
 }
 
 .contacto-container {
@@ -1193,16 +1196,14 @@ ul {
   color: white;
 }
 
-.contacto-container .info-container {
-  align-items: flex-start;
-}
-
-.contacto-container .info-item {
+.contacto-container .info-number {
   position: relative;
   justify-content: flex-start;
   text-align: start;
   color: white;
   font-weight: 400;
+  font-size: 1.2rem;
+  border-bottom: 1px solid white;
 }
 
 .contacto-social {
@@ -1357,6 +1358,53 @@ form label {
 .form-submit:hover {
   background-color: var(--dark-green);
   color: white;
+}
+
+.error-msg-wrapper {
+  margin-top: 20px;
+}
+
+.error-msg {
+  color: red;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.error-icon {
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.error-msg span {
+  font-size: 0.8rem;
+  color: white;
+}
+
+.error-field {
+  border: 2px solid red;
+}
+
+.error-field:focus {
+  outline: 2px solid red;
+}
+
+.error-email {
+  border: 2px solid red;
+}
+
+.error-email:focus {
+  outline: 2px solid red;
 }
 
 /* <Footer /> */

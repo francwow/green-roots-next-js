@@ -1,8 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useInView } from "react-intersection-observer";
+import { useCursorContext } from "../context/Context";
 
 export const InfoEs = () => {
+  const { setHoverLink } = useCursorContext();
   const { ref: contact, inView: contactInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -16,26 +19,24 @@ export const InfoEs = () => {
       }
     >
       <div className="contacto-heading">
-        <h2>Contacto</h2>
+        <h2>
+          También nos puedes escribir por whatsapp:
+          <br />
+          <br />
+          <Link
+            onMouseEnter={() => {
+              setHoverLink(true);
+            }}
+            onMouseLeave={() => {
+              setHoverLink(false);
+            }}
+            target="_blank"
+            href={"https://wa.me/573132335432?text=Hola%20Green%20Roots"}
+          >
+            <span className="info-number">-{">"} +57 3132335432</span>
+          </Link>
+        </h2>
       </div>
-      <ul className="info-container">
-        <li className="info-item">
-          <span>
-            <strong>Whatsapp:</strong> +57 3132105286
-          </span>
-        </li>
-        <li className="info-item">
-          <span>
-            <strong>Teléfono:</strong> 601 8964576
-          </span>
-        </li>
-        <li className="info-item">
-          <span>
-            <strong>Direccíon:</strong> cra 18 # 140-33 Barrio Alcala, Bogota
-            DC, Colombia
-          </span>
-        </li>
-      </ul>
       {/* <ul className="contacto-social">
         <li className="info-item">
           <Link
@@ -71,6 +72,7 @@ export const InfoEs = () => {
 };
 
 export const InfoEn = () => {
+  const { setHoverLink } = useCursorContext();
   const { ref: contact, inView: contactInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -84,26 +86,24 @@ export const InfoEn = () => {
       }
     >
       <div className="contacto-heading">
-        <h2>Contact</h2>
+        <h2>
+          You can also message us in whatsapp:
+          <br />
+          <br />
+          <Link
+            onMouseEnter={() => {
+              setHoverLink(true);
+            }}
+            onMouseLeave={() => {
+              setHoverLink(false);
+            }}
+            target="_blank"
+            href={"https://wa.me/573132335432?text=Hello%20Green%20Roots"}
+          >
+            <span className="info-number">-{">"} +57 3132335432</span>
+          </Link>
+        </h2>
       </div>
-      <ul className="info-container">
-        <li className="info-item">
-          <span>
-            <strong>Whatsapp:</strong> +57 3132105286
-          </span>
-        </li>
-        <li className="info-item">
-          <span>
-            <strong>Tel:</strong> 601 8964576
-          </span>
-        </li>
-        <li className="info-item">
-          <span>
-            <strong>Address:</strong> cra 18 # 140-33 Barrio Alcala, Bogota DC,
-            Colombia
-          </span>
-        </li>
-      </ul>
       {/* <ul className="contacto-social">
         <li className="info-item">
           <Link

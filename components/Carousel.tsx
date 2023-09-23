@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { tiendaItems } from "../data/tiendaItems";
 import Image from "next/image";
 import { useCursorContext, useLanguageContext } from "../context/Context";
+import Link from "next/link";
 
 const Carousel = () => {
   const { ref: carousel, inView: carouselInView } = useInView({
@@ -70,19 +71,28 @@ const Carousel = () => {
                   {language === "ES" ? item.nameES : item.nameEN}
                 </h2>
 
-                <button
-                  onMouseEnter={() => {
-                    setHovered(true);
-                    setHoverLink(true);
-                  }}
-                  onMouseLeave={() => {
-                    setHovered(false);
-                    setHoverLink(false);
-                  }}
-                  className={index === item.index ? "button" : ""}
+                <Link
+                  target="_blank"
+                  href={
+                    language === "ES"
+                      ? "https://wa.me/573132335432?text=Hola%20Green%20Roots"
+                      : "https://wa.me/573132335432?text=Hello%20Green%20Roots"
+                  }
                 >
-                  {language === "ES" ? "COMPRAR" : "BUY"}
-                </button>
+                  <button
+                    onMouseEnter={() => {
+                      setHovered(true);
+                      setHoverLink(true);
+                    }}
+                    onMouseLeave={() => {
+                      setHovered(false);
+                      setHoverLink(false);
+                    }}
+                    className={index === item.index ? "button" : ""}
+                  >
+                    {language === "ES" ? "COMPRAR" : "BUY"}
+                  </button>
+                </Link>
               </div>
               <div className="img-container">
                 <Image src={item.img} alt="GreenRoots product" />

@@ -50,22 +50,22 @@ export const TiendaCopy = () => {
           <div className="copy-background-two"></div>
           {language === "ES" ? (
             <div className="tienda-copy">
-              <h2>Ofrecemos productos 100% naturales y 100% colombianos.</h2>
+              <h2>Nuestros productos son 100% naturales y 100% colombianos</h2>
               <p>
-                Green Roots ofrece productos totalmente naturales, creados a
-                base de CBD y sin químicos. Al comprar nuestros productos estás
-                ayudando a reducir tu propia huella de CO2 ya que somos una
-                empresa
+                Green Roots ofrece productos totalmente naturales, hechos a mano
+                y creados a base de CBD(sin químicos). Al comprar nuestros
+                productos estás ayudando a reducir tu propia huella de CO2 ya
+                que somos una empresa que únicamente trabaja con insumos KM0.
               </p>
             </div>
           ) : (
             <div className="tienda-copy">
-              <h2>We offer 100% colombian CBD products.</h2>
+              <h2>100% colombian, 100% natural</h2>
               <p>
-                Green Roots offers natural products, made from CBD without the
-                use of chemicals. when you buy one of our products you are
-                helping reduce your own CO2 footrpint, we are a completely 0KM
-                company.
+                Green Roots offers natural, handmade CBD produts fabricated
+                without the use of chemicals. when you buy one of our products
+                you are helping reduce your own CO2 footrpint, we are a
+                completely KM0 company.
               </p>
             </div>
           )}
@@ -114,16 +114,34 @@ export const TiendaCopy2 = () => {
         >
           <div className="copy-background-one"></div>
           <div className="copy-background-two"></div>
-          <div className="tienda-copy">
-            {" "}
-            <h2>Ofrecemos productos 100% naturales y 100% colombianos.</h2>
-            <p>
-              Green Roots ofrece productos totalmente naturales, creados a base
-              de CBD y sin químicos. Al comprar nuestros productos estás
-              ayudando a reducir tu propia huella de CO2 ya que somos una
-              empresa{" "}
-            </p>
-          </div>
+          {language === "ES" ? (
+            <div className="tienda-copy">
+              <h2>El CBD ama tu piel {"<"}3</h2>
+              <p>
+                ¿Sabías que tu cuerpo tiene un sistema de receptores de CBD
+                llamado sistema endocannabinoide? <br />
+                Muchos de estos receptores se encuentran en la piel, recientes
+                investigaciones han comprobado que el uso de aceite de CBD puede
+                ayudar a mejorar condiciones dermatológicas como el acné,
+                recequedad, picazón e incluso mejorar el proceso de
+                envejecimiento de la piel debido a sus propiedades
+                anti-inflamatorias y su alto conteido en antioxidantes.
+              </p>
+            </div>
+          ) : (
+            <div className="tienda-copy">
+              <h2>CBD loves your skin {"<"}3</h2>
+              <p>
+                Did you know that your body interacts with CBD trough the
+                endocannabinoid receptor system?
+                <br />
+                Many of these recetors can be found in the skin, recent studies
+                have found that CBD oil can help improve conditions like acne,
+                dryness, itching and it can also help with the aging process due
+                to its antioxidant and anti-inflammatory properties.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
