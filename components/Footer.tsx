@@ -26,13 +26,11 @@ const Footer = () => {
         <div className="footer-info">
           <ul className="info-container">
             <li className="info-item">
-              <span>+57 3132105286</span>
-            </li>
-            <li className="info-item">
-              <span>601 8964576</span>
-            </li>
-            <li className="info-item">
-              <span>cra 18 # 140-33 Barrio Alcala, Bogota DC, Colombia</span>
+              <span>
+                <strong>whatsapp:</strong>
+                <br />
+                +57 3132335432
+              </span>
             </li>
           </ul>
           <ul className="footer-nav">
