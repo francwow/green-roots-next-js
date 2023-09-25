@@ -53,7 +53,7 @@ export const TiendaCopy = () => {
               <h2>Nuestros productos son 100% naturales y 100% colombianos</h2>
               <p>
                 Green Roots ofrece productos totalmente naturales, hechos a mano
-                y creados a base de CBD(sin químicos). Al comprar nuestros
+                y creados a base de CBD (sin químicos). Al comprar nuestros
                 productos estás ayudando a reducir tu propia huella de CO2 ya
                 que somos una empresa que únicamente trabaja con insumos KM0.
               </p>
@@ -118,14 +118,14 @@ export const TiendaCopy2 = () => {
             <div className="tienda-copy">
               <h2>El CBD ama tu piel {"<"}3</h2>
               <p>
-                ¿Sabías que tu cuerpo tiene un sistema de receptores de CBD
+                ¿Sabías que tu cuerpo tiene un grupo de receptores de CBD
                 llamado sistema endocannabinoide? <br />
                 Muchos de estos receptores se encuentran en la piel, recientes
                 investigaciones han comprobado que el uso de aceite de CBD puede
                 ayudar a mejorar condiciones dermatológicas como el acné,
-                recequedad, picazón e incluso mejorar el proceso de
+                resequedad, picazón e incluso mejorar el proceso de
                 envejecimiento de la piel debido a sus propiedades
-                anti-inflamatorias y su alto conteido en antioxidantes.
+                anti-inflamatorias y su alto contenido en antioxidantes.
               </p>
             </div>
           ) : (

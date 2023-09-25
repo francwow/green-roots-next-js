@@ -207,12 +207,12 @@ ul {
   right: 0;
   left: 0;
   display: flex;
-  padding: 0 10px;
+  padding: 10px 10px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100vw;
-  height: 50px;
+  height: 70px;
   transform: translate3d(0, 0, 0);
   background-color: var(--dark-green);
   transition:
@@ -323,10 +323,10 @@ ul {
 
 .main-nav {
   position: fixed;
-  transform: translate3d(0, 50px, 0);
+  transform: translate3d(0, 70px, 0);
   inset: 0;
   width: 100vw;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 70px);
   background-color: var(--dark-green);
   display: flex;
   flex-direction: column;
@@ -668,8 +668,6 @@ ul {
   align-items: center;
   justify-content: center;
   flex-basis: 50%;
-  max-width: calc(350px + 10vw);
-  height: 400px;
   opacity: 0;
   transform: translate3d(0, 20%, 0);
   transition: 1s ease all;
@@ -705,7 +703,7 @@ ul {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding: 20px 0;
+  gap: 20px;
 }
 
 .tienda-copy {
@@ -713,14 +711,14 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: calc(250px + 15vw);
-  height: calc(250px + 15vw);
+  width: calc(300px + 15vw);
+  height: calc(300px + 15vw);
   position: relative;
   z-index: 999;
 }
 
 .tienda-copy h2 {
-  padding: 0 10px;
+  padding: 0 50px;
   color: var(--beige);
   text-align: center;
   font-size: calc(1.1rem + 0.5vw);
@@ -731,10 +729,10 @@ ul {
   word-break: break-word;
   font-family: var(--font-body);
   font-weight: 600;
-  padding: 0 20px;
+  padding: 0 30px;
   color: white;
   line-height: 1.4;
-  font-size: calc(0.6rem + 0.5vw);
+  font-size: calc(0.7rem + 0.5vw);
 }
 
 .copy-background-one {
@@ -745,8 +743,8 @@ ul {
   position: absolute;
   margin: auto;
   inset: 0;
-  width: calc(350px + 10vw);
-  height: calc(350px + 10vw);
+  width: calc(300px + 12vw);
+  height: calc(300px + 12vw);
   animation: border-radius-one 4s infinite ease;
 }
 
@@ -758,8 +756,8 @@ ul {
   position: absolute;
   margin: auto;
   inset: 0;
-  width: calc(350px + 10vw);
-  height: calc(350px + 10vw);
+  width: calc(300px + 15vw);
+  height: calc(300px + 15vw);
   animation: border-radius-two 5s infinite ease;
 }
 
@@ -1225,7 +1223,8 @@ ul {
 
 .form-wrapper {
   flex-basis: 50%;
-  padding: 15px;
+  padding: 10px;
+  max-width: 320px;
 }
 
 .contact-form {
@@ -1597,8 +1596,9 @@ form label {
     top: 0;
     bottom: 0;
     right: 0;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
+    padding: 10px 70px;
   }
 
   /* .main-nav {
@@ -1702,6 +1702,24 @@ form label {
   .copy-background-two {
     padding: 0 70px;
   } */
+
+  .tienda-copy h2 {
+    padding: 0 50px;
+    color: var(--beige);
+    text-align: center;
+    font-size: calc(1.1rem + 0.5vw);
+  }
+
+  .tienda-copy p {
+    text-align: center;
+    word-break: break-word;
+    font-family: var(--font-body);
+    font-weight: 600;
+    padding: 0 50px;
+    color: white;
+    line-height: 1.4;
+    font-size: calc(0.6rem + 0.5vw);
+  }
 
   .tienda-icons {
     width: 600px;
@@ -1928,6 +1946,10 @@ form label {
   .contacto-social .info-item:hover::after {
     transform: scale(1, 1);
     transform-origin: left;
+  }
+
+  .form-wrapper {
+    max-width: 450px;
   }
 
   form input,
