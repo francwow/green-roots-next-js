@@ -1,4 +1,5 @@
 import Cursor from "../../components/Cursor";
+import GoogleAnalytics from "../../components/GoogleAnalytics";
 import Header from "../../components/Header";
 import Provider from "../../components/Provider";
 import ScrollTop from "../../components/ScrollTop";
@@ -28,6 +29,7 @@ export default function RootLayout({
           <div className="page-wrapper">
             <Cursor />
             <Header />
+            <GoogleAnalytics />
             {children}
           </div>
         </body>
