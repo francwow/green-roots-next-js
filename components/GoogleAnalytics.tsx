@@ -2,10 +2,13 @@
 
 import Script from "next/script";
 import * as gtag from "../gtag.js";
+import { useEffect } from "react";
 
 const GoogleAnalytics = () => {
   //You can show in the console the GA_TRACKING_ID to confirm
-  console.log(gtag.GA_TRACKING_ID);
+  useEffect(() => {
+    console.log(gtag.GA_TRACKING_ID);
+  }, []);
 
   return (
     <>
