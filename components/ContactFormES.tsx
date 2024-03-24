@@ -2,11 +2,13 @@
 
 import { useRef, useState } from "react";
 import { useCursorContext } from "../context/Context";
+import Icon from "./GoogleIcon";
 
 const ContactFormES = () => {
   const { setHoverLink } = useCursorContext();
   const submitRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [validEmail, setValidEmail] = useState(true);
   const [nameError, setNameError] = useState(false);
   const [surNameError, setSurNameError] = useState(false);
@@ -38,6 +40,7 @@ const ContactFormES = () => {
         action=""
         onSubmit={(e) => {
           e.preventDefault();
+          setSuccess(false);
           console.log("not ready to send yet");
 
           if (data.name.length === 0) {
@@ -83,6 +86,12 @@ const ContactFormES = () => {
             ValidateEmail(data.email) === true
           ) {
             setError(false);
+            setSuccess(true);
+            setName("");
+            setSurName("");
+            setEmail("");
+            setSubject("");
+            setMessage("");
             console.log("message sent successfully");
             fetch("/contacto/api", {
               method: "POST",
@@ -109,6 +118,7 @@ const ContactFormES = () => {
                   onChange={(e) => setName(e.target.value)}
                   type="text"
                   id="name"
+                  value={name}
                 />
               </div>
               <div className="form-field">
@@ -118,6 +128,7 @@ const ContactFormES = () => {
                   onChange={(e) => setSurName(e.target.value)}
                   type="text"
                   id="surname"
+                  value={surName}
                 />
               </div>
             </div>
@@ -132,6 +143,7 @@ const ContactFormES = () => {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               id="email"
+              value={email}
             />
             {!validEmail ? (
               <div style={{ marginTop: "0px" }} className="error-msg-wrapper">
@@ -156,6 +168,7 @@ const ContactFormES = () => {
               onChange={(e) => setSubject(e.target.value)}
               type="text"
               id="subject"
+              value={subject}
             />
           </div>
           <div className="form-item">
@@ -166,6 +179,7 @@ const ContactFormES = () => {
             <textarea
               className={messageError ? "error-field" : ""}
               onChange={(e) => setMessage(e.target.value)}
+              value={message}
               id="message"
             />
           </div>
@@ -178,6 +192,18 @@ const ContactFormES = () => {
                   <span>!</span>
                 </div>
                 Por favor llenar los campos obligatorios.
+              </h3>
+            </div>
+          </div>
+        ) : null}
+        {success ? (
+          <div className="success-msg-wrapper">
+            <div>
+              <h3 className="success-msg">
+                <div className="success-icon">
+                  <Icon icon="check" />
+                </div>
+                Mensaje enviado correctamente.
               </h3>
             </div>
           </div>

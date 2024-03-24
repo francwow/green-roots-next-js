@@ -2,11 +2,13 @@
 
 import { useRef, useState } from "react";
 import { useCursorContext } from "../context/Context";
+import Icon from "./GoogleIcon";
 
 const ContactFormEN = () => {
   const { setHoverLink } = useCursorContext();
   const submitRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [validEmail, setValidEmail] = useState(true);
   const [nameError, setNameError] = useState(false);
   const [surNameError, setSurNameError] = useState(false);
@@ -178,6 +180,19 @@ const ContactFormEN = () => {
                   <span>!</span>
                 </div>
                 Please fill the required fields.
+              </h3>
+            </div>
+          </div>
+        ) : null}
+
+        {success ? (
+          <div className="success-msg-wrapper">
+            <div>
+              <h3 className="success-msg">
+                <div className="success-icon">
+                  <Icon icon="check" />
+                </div>
+                Mensaje enviado correctamente.
               </h3>
             </div>
           </div>
